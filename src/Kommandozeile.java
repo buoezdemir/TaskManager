@@ -26,12 +26,12 @@ public class Kommandozeile {
 		System.out.println("********************************** ");
 	}
 
-	public void start() {
+	public void start() {		
 		String s = "-";
-		while (!s.equals("3")) {
+		while (!s.equals("6")) {
 			MenüAnzeigen();
-			s = scan.nextLine();
-			switch(s)
+			s = scan.nextLine(); 
+			switch (s) 
 			{
 			case "1":
 				this.tasklisteAusgeben();
@@ -93,9 +93,7 @@ public class Kommandozeile {
 	{
 		System.out.println("Sie können nur 1,2,3,4,5 oder x eingeben!");
 	}
-	___________________________________________________________________________
-	___________________________________________________________________________
-	___________________________________________________________________________
+
 
 	/**
 	 * Ruft die Methode alleAufgabenAnzeigen() der Aufgabenliste auf die dann alle gespiecherten Aufgaben ausgibt
