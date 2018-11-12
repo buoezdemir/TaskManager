@@ -1,4 +1,11 @@
 import java.util.Scanner;
+import java.util.GregorianCalendar;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import Aufgabe;
+import AufgabenMitDeadline;
+import Aufgabenliste;
 
 public class Kommandozeile {
 
@@ -27,19 +34,19 @@ public class Kommandozeile {
 			switch(s)
 			{
 			case "1":
-				this.ausgabe();
+				this.tasklisteAusgeben();
 				break;
 			case "2":
-				this.durchsuchen();
+				this.inTasklisteSuchen();
 				break;
 			case "3":
-				this.zeigeDeadline();
+				this.deadlineAnzeigen();
 				break;
 			case "4":
-				this.hinzufügen();
+				this.aufgabeHinzufuegen();
 				break;
 			case "5":
-				this.erledigt();
+				this.aufgabeEntfernen();
 				break;
 			case "x":
 				this.beende();
@@ -86,6 +93,49 @@ public class Kommandozeile {
 	{
 		System.out.println("Sie können nur 1,2,3,4,5 oder x eingeben!");
 	}
+	___________________________________________________________________________
+	___________________________________________________________________________
+	___________________________________________________________________________
 
+	/**
+	 * Ruft die Methode alleAufgabenAnzeigen() der Aufgabenliste auf die dann alle gespiecherten Aufgaben ausgibt
+	 */
+	private void tasklisteAusgeben() {
+		tasklist.alleAufgabenAnzeigen();
+	}
+	
+	/**
+	 * Fordert nach einen Aufgabentext auf und übergibt das dann der Methode aufgabenAnzeigenNachText() der Aufgabenliste
+	 */
+	private void inTasklisteSuchen() {
+		System.out.println("Bitte geben Sie den Aufgabentext ein");
+		String text = scan.nextLine();
+		tasklist.aufgabenAnzeigenNachText(text);
+	}
+	
+	/**
+	 * Ruft die Methode deadlinesAusgeben() der Aufgabeliste auf die alle AufgabenMitDeadline anzeigt
+	 */
+	private void deadlineAnzeigen() {
+		tasklist.deadlinesAusgeben();
+	}
+
+	/**
+	 * Fragt welche Aufgaben man hinzufügen möchte und ruft die dafür nötigen Methoden auf
+	 */
+	private void aufgabeHinzufuegen() {
+		System.out.println("Welche Aufgabe möchten Sie hinzufügen");
+		System.out.println(gueltiugeAufgaben()); // Zeigt alle verfügbaren Aufgaben an
+		String eingabe = scan.nextLine();
+		if (eingabe.toLowerCase().trim().equals(AufgabenEnum.AUFGABE.toString().toLowerCase())) {
+			tasklist.addAufgabe(newAufgabe());
+		}
+		if (eingabe.toLowerCase().trim().equals(AufgabenEnum.AUFGABEMITDEADLINE.toString().toLowerCase())) {
+			tasklist.addAufgabe(newAufgabeMitDeadline());
+		}
+	}
+
+	/**
+	 * Gibt alle gültigen Aufgaben aus der Klasse AugabenEnum als String zurück
 
 }
